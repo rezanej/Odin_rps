@@ -53,28 +53,27 @@ function game()
 {
     let computerWin=0;
     let playerWin=0;
-    for (let i = 0; i < 6; i++) {
-        let playerChoice=playerSelection();
-        let computerChoice=getComputerChoice();
-        result=playRound(computerChoice,playerChoice);
-        if(result===1){
-            console.log("You Won! "+ playerChoice+" beats"+" "+computerChoice);
-            playerWin++;
-        }
-        else if(result===-1)
-        {
-            console.log("You Lose! "+ computerChoice+" beats"+" "+playerChoice);
-            computerWin++;
-        }
-        else{
-            console.log("Draw! both choices were: "+playerChoice);
-        }
-        
+    
+    let playerChoice=playerSelection();
+    let computerChoice=getComputerChoice();
+    result=playRound(computerChoice,playerChoice);
+    if(result===1){
+        console.log("You Won! "+ playerChoice+" beats"+" "+computerChoice);
+        playerWin++;
     }
+    else if(result===-1)
+    {
+        console.log("You Lose! "+ computerChoice+" beats"+" "+playerChoice);
+        computerWin++;
+    }
+    else{
+        console.log("Draw! both choices were: "+playerChoice);
+    }
+    
+    
     console.log("Result: ")
     console.log("Player Win: "+playerWin)
     console.log("Computer Win: "+computerWin)
     console.log("Draw: "+(5-computerWin-playerWin))
     
 }
-game()
