@@ -45,6 +45,7 @@ button{
     padding: 10px 25px;
     flex: 1;
     min-width: 200px;
+    
 }
 button:hover{
     background-color: #777;
@@ -53,6 +54,10 @@ button:hover{
 button:active{
     background-color: white;
     color: black;
+}
+button:disabled{
+    background-color: #444;
+    color: bisque;
 }
 .result {
     padding: 10px;

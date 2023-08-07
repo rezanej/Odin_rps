@@ -91,10 +91,36 @@ function makeRound(result,playerChoice,computerChoice)
     results.appendChild(divRound);
 }
 
+function isDone(){
+    if(playerWin>=5)
+    {
+        document.querySelector('.result-final h2').textContent='YOU Win!!!';
+        return true;
+    }
+    else if(computerWin>=5)
+    {
+        document.querySelector('.result-final h2').textContent='Computer Wins!!!';
+        return true;
+
+    }
+    else return false;
+}
+function updateWins()
+{
+    document.querySelector('.result #you').textContent=`You: ${playerWin}`;
+    document.querySelector('.result #computer').textContent=`Computer: ${computerWin}`;
+}
+function disableButtons()
+{
+    const buttons=document.querySelectorAll('.button');
+    buttons.forEach((button)=>{
+        button.setAttribute('disabled',"true");
+    })
+}
 function game(playerChoice)
 {
     
-
+    if(!isDone()){
     let computerChoice=getComputerChoice();
     result=playRound(computerChoice,playerChoice);
     if(result===1){
@@ -109,11 +135,14 @@ function game(playerChoice)
     else{
         makeRound(result,playerChoice,computerChoice)
     }
-    
-    
+    updateWins();
+    }
+    else{
+        disableButtons();
+    }
    
-    
 }
+
 function buttonPressed(value)
 {
     game(value)
