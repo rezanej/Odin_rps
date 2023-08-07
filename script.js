@@ -77,3 +77,16 @@ function game()
     console.log("Draw: "+(5-computerWin-playerWin))
     
 }
+function buttonPressed(value)
+{
+    console.log(value);
+}
+function addButtonsEvent(){
+    
+    let buttons=document.querySelectorAll(".button");
+    buttons.forEach((button)=>{
+        button.addEventListener('click',()=>{buttonPressed(button.getAttribute('value'))})
+    })
+}
+
+addButtonsEvent();
