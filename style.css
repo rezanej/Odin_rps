@@ -46,6 +46,14 @@ button{
     flex: 1;
     min-width: 200px;
 }
+button:hover{
+    background-color: #777;
+    border-color: #777;
+}
+button:active{
+    background-color: white;
+    color: black;
+}
 .result {
     padding: 10px;
     display: flex;
