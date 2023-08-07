@@ -48,38 +48,75 @@ function playRound(computerChoice,playerChoice)
         return -1;
     }
 }
+let round=1;
+let computerWin=0;
+let playerWin=0;
 
-function game()
+
+function makeRound(result,playerChoice,computerChoice)
 {
-    let computerWin=0;
-    let playerWin=0;
+    const results=document.querySelector('.results');
+    const divRound=document.createElement('div');
+    divRound.classList.add("round");
+
+    const roundNumber=document.createElement('h3');
+    roundNumber.textContent=`Round ${round++}`;
+
+    divRound.appendChild(roundNumber);
+
+    const divRoundInfo=document.createElement('div');
+    divRoundInfo.classList.add("roundInfo");
+    divRound.appendChild(divRoundInfo);
+
+    const pYou=document.createElement('p');
+    const pWinner=document.createElement('p');
+    const pComputer=document.createElement('p');
+
+    pYou.textContent=`You: ${playerChoice}`;
+    pComputer.textContent=`Computer: ${computerChoice}`;
+    if(result===1)
+    {
+        pWinner.textContent='   You Win!   ';
+    }
+    else if(result===-1){
+        pWinner.textContent='Computer Wins!';
     
-    let playerChoice=playerSelection();
+    }
+    else{
+        pWinner.textContent="Draw!"
+    }
+    divRoundInfo.appendChild(pYou);
+    divRoundInfo.appendChild(pWinner);
+    divRoundInfo.appendChild(pComputer);
+    results.appendChild(divRound);
+}
+
+function game(playerChoice)
+{
+    
+
     let computerChoice=getComputerChoice();
     result=playRound(computerChoice,playerChoice);
     if(result===1){
-        console.log("You Won! "+ playerChoice+" beats"+" "+computerChoice);
+        makeRound(result,playerChoice,computerChoice)
         playerWin++;
     }
     else if(result===-1)
     {
-        console.log("You Lose! "+ computerChoice+" beats"+" "+playerChoice);
+        makeRound(result,playerChoice,computerChoice)
         computerWin++;
     }
     else{
-        console.log("Draw! both choices were: "+playerChoice);
+        makeRound(result,playerChoice,computerChoice)
     }
     
     
-    console.log("Result: ")
-    console.log("Player Win: "+playerWin)
-    console.log("Computer Win: "+computerWin)
-    console.log("Draw: "+(5-computerWin-playerWin))
+   
     
 }
 function buttonPressed(value)
 {
-    console.log(value);
+    game(value)
 }
 function addButtonsEvent(){
     
